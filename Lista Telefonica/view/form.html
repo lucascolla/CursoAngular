@@ -1,0 +1,16 @@
+<form name="contatoForm">
+    <input class="form-control" type="text" ng-model="contato.nome" name="nome" ng-required="true">
+    <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" ng-required="true">
+    <select class="form-control" ng-model="contato.operadora" ng-options="operadora.codigo as operadora.nome for operadora in operadoras" ng-required="true">
+                <option value="">Selecione operadora</option>
+            </select>
+    <button ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid" class="btn btn-primary">Adicionar</button>
+    <button ng-click="apagarContatos(contatos)" ng-disabled="!isContatoSelecionado(contatos)" class="btn btn-danger">Apagar</button>
+    <a href="#!/contatos" class="btn btn-success">Voltar</a>
+</form>
+<div ng-show="contatoForm.nome.$invalid && contatoForm.nome.$dirty" class="alert alert-danger">
+    Preencha o campo nome
+</div>
+<div ng-show="contatoForm.telefone.$invalid && contatoForm.telefone.$dirty" class="alert alert-danger">
+    Preencha o campo telefone
+</div>
